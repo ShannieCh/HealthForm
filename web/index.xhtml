@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Health Form</title>
+        <h:outputStylesheet library="css" name="myStyle.css" />
+    </h:head>
+    <h:body>
+        <h2>Patient Registration Form </h2>
+        <h:form>
+            <h:panelGrid columns="2" style="margin-bottom:20px" cellpadding="5">
+                <p:outputLabel value="First Name:"/>
+                <p:inputText class="form-control" id="firstName" value="#{patientBean.patient.firstName}"/>
+                <p:outputLabel value="Last name:"/>
+                <p:inputText class="form-control" id="lastName" value="#{patientBean.patient.lastName}"/>
+
+                <p:outputLabel value="Any medical condition?"/>
+                <p:inputText class="form-control" id="medicalCondition" value="#{patientBean.patient.medicalCondition}" required="true"/>
+
+                <p:outputLabel value="Rate your pain:"/>
+                <p:selectOneMenu id="scaleOfPain" value="#{patientBean.patient.scaleOfPain}" required="true">
+                    <f:selectItem itemLabel="Mild" itemValue="Mild"/>
+                    <f:selectItem itemLabel="Moderate" itemValue="Moderate"/>
+                    <f:selectItem itemLabel="Severe" itemValue="Severe"/>
+                    <f:selectItem itemLabel="Normal(no pain)" itemValue="Normal"/>
+                </p:selectOneMenu>
+
+                <p:outputLabel value="What is Your Blood Type?"/>
+                <p:selectOneMenu id="bloodType" value="#{patientBean.patient.bloodType}" required="true">
+                    <f:selectItem itemLabel="O negative" itemValue="O negative"/>
+                    <f:selectItem itemLabel="O positive" itemValue="O positive"/>
+                    <f:selectItem itemLabel="A negative" itemValue="A negative"/>
+                    <f:selectItem itemLabel="A positive" itemValue="A positive"/>
+                    <f:selectItem itemLabel="B negative" itemValue="B negative"/>
+                    <f:selectItem itemLabel="B positive" itemValue="B positive"/>
+                    <f:selectItem itemLabel="AB negative" itemValue="AB negative"/>
+                    <f:selectItem itemLabel="AB positive" itemValue="AB positive"/>
+                </p:selectOneMenu>
+
+               
+                <h:commandButton value="Submit" action="#{patientBean.addPatient()}"></h:commandButton>
+            </h:panelGrid>
+        </h:form>                     
+    </h:body>
+</html>
